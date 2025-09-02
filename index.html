@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magical Sudoku Kingdom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+        background-attachment: fixed;
+      }
+
+      .sparkle-animation {
+        position: relative;
+        animation: sparkle 0.8s ease-out;
+      }
+      @keyframes sparkle {
+        0% { transform: scale(1); text-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+        50% { transform: scale(1.5); text-shadow: 0 0 20px rgba(255, 215, 0, 1); }
+        100% { transform: scale(1); text-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+      }
+      
+      .fireworks {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 49;
+      }
+
+      .firework {
+        position: absolute;
+      }
+
+      .firework::before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 2px;
+        animation: firework-rocket 1.2s ease-in-out both;
+        animation-delay: inherit;
+      }
+
+      .firework::after {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: transparent;
+        animation: firework-explode 1.2s ease-in-out both;
+        animation-delay: inherit;
+      }
+      
+      @keyframes firework-rocket {
+        0% { transform: translateY(10vh); opacity: 1; }
+        100% { transform: translateY(-90vh); opacity: 0; }
+      }
+      
+      @keyframes firework-explode {
+        0% { opacity: 0; transform: scale(0.5); box-shadow: none; }
+        50% { opacity: 0; }
+        51% { opacity: 1; }
+        100% {
+          opacity: 0;
+          transform: scale(15);
+          box-shadow: 0 0 1em #f0f, 0 0 1em #0ff, 0 0 1em #ff0, 0 0 1em #f00, 0 0 1em #0f0, 0 0 1em #00f;
+        }
+      }
+
+      .mini-firework {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: transparent;
+        pointer-events: none;
+        animation: mini-firework-explode 0.8s ease-out forwards;
+      }
+      
+      @keyframes mini-firework-explode {
+        0% {
+          transform: scale(0.1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0;
+          box-shadow: 
+            0 -20px 0px 2px #f0f, 0 20px 0px 2px #0ff, 20px 0 0px 2px #ff0, -20px 0 0px 2px #f00,
+            14px -14px 0px 2px #0f0, -14px 14px 0px 2px #00f, 14px 14px 0px 2px #ff0, -14px -14px 0px 2px #f0f;
+        }
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.16.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
